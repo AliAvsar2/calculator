@@ -1,0 +1,11 @@
+number_1= 0, decimal="", clicked_id="." => display=number_1+clicked_id
+number_1= 0, decimal="", clicked_id=0 => display=number_1
+number_1= 0, decimal="1", clicked_id!="." => display=number_1
+
+
+
+
+number_1!= 0, decimal="", clicked_id!="." => display=number_1+cliced_id
+number_1!= 0, decimal="1", clicked_id="." => display=number_1
+
+

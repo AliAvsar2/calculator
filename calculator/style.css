@@ -1,0 +1,27 @@
+* {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+  /* cursor: pointer;*/
+  font-family: sans-serif;
+}
+#displayer1 {
+  color: rgb(169, 177, 174);
+}
+div {
+  width: 100px;
+  height: 20px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  text-align: right;
+}
+table tr th {
+  width: 25px;
+  cursor: pointer;
+  background-color: aqua;
+  cursor: pointer;
+}
+#displayer2 {
+  border-bottom: 1px solid black;
+}
