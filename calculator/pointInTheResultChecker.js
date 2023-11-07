@@ -1,5 +1,5 @@
 "use strict";
-export function sonuctaNoktaKontrolEdici(aaa) {
+export function pointInTheResultChecker(aaa) {
   let decimalNumberResult = aaa;
 
   let placeOfDecimalPointResult;
@@ -48,21 +48,21 @@ export function sonuctaNoktaKontrolEdici(aaa) {
       const numbersOtherThanZeroResult = (element) => element !== "0";
 
       if (digitsAfterTheDecimalPointResult.some(numbersOtherThanZeroResult)) {
-        const sifirOlmayanSayilarinArrayi = [];
+        const arrayOfTheNonZeroNumrse = [];
         for (let i = 0; i < digitsAfterTheDecimalPointResult.length; i++) {
           if (digitsAfterTheDecimalPointResult[i] != "0") {
             // console.log(i, digitsAfterTheDecimalPointResult[i], " sıfır değil");
-            sifirOlmayanSayilarinArrayi.push(i);
+            arrayOfTheNonZeroNumrse.push(i);
             // console.log(sifirOlmayanSayilarinArrayi, " bunlar sifir olmayan sayılar");
           }
         }
         //************************sıfır olmayan sayıların array uzunluğunu belirle************************ */
-        const uzunluk = sifirOlmayanSayilarinArrayi.length;
+        const uzunluk = arrayOfTheNonZeroNumrse.length;
         // console.log(uzunluk);
 
         //**************************************sıfır olmayan sayıların array'indeki son ögenin indexi bize indexten sonrasını sileceğimizi gösterir */
         const placeOfTheLastNumberOtherThanZero =
-          sifirOlmayanSayilarinArrayi[uzunluk - 1];
+          arrayOfTheNonZeroNumrse[uzunluk - 1];
         // console.log(
         //   placeOfTheLastNumberOtherThanZero,
         //   " burası sıfırdan farklı sayıdan sonraki sıfır sayısını gösteriyor"

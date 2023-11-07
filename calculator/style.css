@@ -7,11 +7,12 @@
 }
 .container {
   margin-top: 5rem;
-  width: 20.5rem;
+  width: 19.8rem;
   height: auto;
   border: 1px solid black;
   padding: 0.1rem;
   border-radius: 3px;
+  background-color: rgb(245, 244, 244);
 }
 .displayer-container {
   text-align: right;
@@ -36,13 +37,15 @@
 }
 table tr th {
   font-size: 2rem;
-  width: 5rem;
-  height: 3rem;
+  width: 4.8rem;
+  height: 3.2rem;
   cursor: pointer;
   background-color: aqua;
   cursor: pointer;
   border-radius: 3px;
+  border: 1px solid gray;
 }
+
 .equalSign {
   background-color: rgb(189, 194, 192);
 }
