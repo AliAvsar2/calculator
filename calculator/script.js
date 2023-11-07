@@ -1,5 +1,6 @@
 "use strict";
-import { sonuctaNoktaKontrolEdici } from "./sonuctaNoktaKontrolEdici.js";
+import { pointInTheResultChecker } from "./pointInTheResultChecker.js";
+import { result } from "./result.js";
 const operatorPlus = document.getElementById("+");
 const operatorMinus = document.getElementById("-");
 const operatorTimes = document.getElementById("x");
@@ -24,6 +25,7 @@ let decimalPoint_2 = numberProducerObject.decimalPoint_2;
 let operator = numberProducerObject.operator_1;
 
 displayer2.textContent = "0";
+//************** EVENT DELEGATION ******************************** */
 buttonNodeList.addEventListener("click", function (e) {
   if (e.target && e.target.nodeName == "TH") {
     let clicked_id = e.target.id.replace("item_", "");
@@ -182,28 +184,40 @@ buttonNodeList.addEventListener("click", function (e) {
     function operatorPlusAssigner() {
       if (!operator) {
         operator = "+";
+        console.log("artıya tıklandıı");
         displayer1.textContent = num1 + operator;
       }
     }
+
     operatorMinus.addEventListener("click", operatorMinusAssigner);
     function operatorMinusAssigner() {
-      operator = "-";
-      displayer1.textContent = num1 + operator;
+      if (!operator) {
+        operator = "-";
+        console.log("eksiye tıklandıı");
+        displayer1.textContent = num1 + operator;
+      }
     }
+
     operatorTimes.addEventListener("click", operatorTimesAssigner);
     function operatorTimesAssigner() {
-      operator = "x";
-      displayer1.textContent = num1 + operator;
+      if (!operator) {
+        operator = "x";
+        displayer1.textContent = num1 + operator;
+      }
     }
     operatorOver.addEventListener("click", operatorOverAssigner);
     function operatorOverAssigner() {
-      operator = "/";
-      displayer1.textContent = num1 + operator;
+      if (!operator) {
+        operator = "/";
+        displayer1.textContent = num1 + operator;
+      }
     }
     operatorPercent.addEventListener("click", operatorPercentAssigner);
     function operatorPercentAssigner() {
-      operator = "%";
-      displayer1.textContent = num1 + operator;
+      if (!operator) {
+        operator = "%";
+        displayer1.textContent = num1 + operator;
+      }
     }
     //***********************OPERATORS ABOVE ******************************* */}
     //************************The first number has been produced.****** */
@@ -368,10 +382,12 @@ buttonNodeList.addEventListener("click", function (e) {
       clicked_id != "x2" &&
       clicked_id != "squareRoot"
     ) {
-      displayer1.textContent = +num1 + +num2;
+      displayer1.textContent = result(num1, num2, operator);
+      num1 = displayer1.textContent;
       displayer2.textContent = clicked_id;
-      num1 = +num1 + +num2;
+      // num1 = +num1 + +num2;
       num2 = "";
+      console.log("aşağıda artıya tıklandı");
       operator = clicked_id;
       decimalPoint_2 = "";
     }
@@ -385,10 +401,12 @@ buttonNodeList.addEventListener("click", function (e) {
       clicked_id != "x2" &&
       clicked_id != "squareRoot"
     ) {
-      displayer1.textContent = +num1 - +num2;
+      displayer1.textContent = result(num1, num2, operator);
+      num1 = displayer1.textContent;
       displayer2.textContent = clicked_id;
-      num1 = +num1 - +num2;
+      // num1 = +num1 - +num2;
       num2 = "";
+      console.log("aşağıda eksiye tıklandı");
       operator = clicked_id;
       decimalPoint_2 = "";
     }
@@ -402,9 +420,28 @@ buttonNodeList.addEventListener("click", function (e) {
       clicked_id != "x2" &&
       clicked_id != "squareRoot"
     ) {
-      displayer1.textContent = +num1 * +num2;
+      displayer1.textContent = result(num1, num2, operator);
+      num1 = displayer1.textContent;
       displayer2.textContent = clicked_id;
-      num1 = +num1 * +num2;
+      // num1 = +num1 - +num2;
+      num2 = "";
+      operator = clicked_id;
+      decimalPoint_2 = "";
+    }
+    //*****************over operator*********************** */
+    if (
+      num1 &&
+      num2 &&
+      operator &&
+      clicked_id == "/" &&
+      clicked_id != "backarrow" &&
+      clicked_id != "x2" &&
+      clicked_id != "squareRoot"
+    ) {
+      displayer1.textContent = result(num1, num2, operator);
+      num1 = displayer1.textContent;
+      displayer2.textContent = clicked_id;
+      // num1 = +num1 - +num2;
       num2 = "";
       operator = clicked_id;
       decimalPoint_2 = "";
@@ -417,7 +454,7 @@ buttonNodeList.addEventListener("click", function (e) {
         numberProducerObject.numberResult = sonuc;
         displayer1.textContent = num1 + operator + num2 + clicked_id;
         let aaa = sonuc;
-        displayer2.textContent = sonuctaNoktaKontrolEdici(aaa);
+        displayer2.textContent = pointInTheResultChecker(aaa);
 
         //**********************************************ARTI YUKARIDA */
       } else if (operator == "-") {
@@ -425,28 +462,28 @@ buttonNodeList.addEventListener("click", function (e) {
         numberProducerObject.numberResult = sonuc;
         displayer1.textContent = num1 + operator + num2 + clicked_id;
         let aaa = sonuc;
-        displayer2.textContent = sonuctaNoktaKontrolEdici(aaa);
+        displayer2.textContent = pointInTheResultChecker(aaa);
 
         //****************************************************************************** */
       } else if (operator == "x") {
         const sonuc = parseFloat(+num1 * +num2).toPrecision(10);
         displayer1.textContent = num1 + operator + num2 + clicked_id;
         let aaa = sonuc;
-        displayer2.textContent = sonuctaNoktaKontrolEdici(aaa);
+        displayer2.textContent = pointInTheResultChecker(aaa);
 
         //************************************************************************************ */
       } else if (operator == "/") {
         const sonuc = parseFloat(+num1 / +num2).toPrecision(10);
         displayer1.textContent = num1 + operator + num2 + clicked_id;
         let aaa = sonuc;
-        displayer2.textContent = sonuctaNoktaKontrolEdici(aaa);
+        displayer2.textContent = pointInTheResultChecker(aaa);
 
         //************************************************************************************************ */
       } else if (operator == "%") {
         const sonuc = parseFloat((+num1 * +num2) / 100).toPrecision(10);
         displayer1.textContent = num1 + operator + num2 + clicked_id;
         let aaa = sonuc;
-        displayer2.textContent = sonuctaNoktaKontrolEdici(aaa);
+        displayer2.textContent = pointInTheResultChecker(aaa);
       }
     }
 
@@ -458,7 +495,7 @@ buttonNodeList.addEventListener("click", function (e) {
         console.log(num1);
         displayer1.textContent = num1 + "*" + num1;
         let aaa = Math.pow(num1, 2).toPrecision(10);
-        displayer2.textContent = sonuctaNoktaKontrolEdici(aaa);
+        displayer2.textContent = pointInTheResultChecker(aaa);
       }
 
       squareMethod();
